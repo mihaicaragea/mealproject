@@ -5,8 +5,9 @@ import {Link} from "react-router-dom";
 function Meals(props) {
 
     const [mealList, setMealList] = useState([]);
-    const [ingredient, setIngredient] = useState(''); //chicken
+    const [ingredient, setIngredient] = useState('');
     const key = '1dfec2d9def1413d92b176006307e197';
+    const anotherKey = '1689071996f543429fedccf5f0885331';
 
     const handleChange = (e) => {
         e.preventDefault();
@@ -16,10 +17,9 @@ function Meals(props) {
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(ingredient);
-        axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${key}&query=${ingredient}`)
+        axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${anotherKey}&query=${ingredient}&number=40`)
             .then(response => {
                 setMealList(response.data.results)
-                console.log(response.data.results)
             })
     }
 
@@ -35,11 +35,17 @@ function Meals(props) {
                 <button type='submit'>Submit search</button>
             </form>
 
-            <div>
+            <div className='row align-items-center'>
                 {mealList.map((meal, index) => {
-                    return <Link to={`/meal/${meal.id}`}>
-                             <h1 key={index}>{meal.title}</h1>
-                            </Link>
+                    return <div className='col'>
+                            <div className="card" key={index}>
+                                        <img src={meal.image} className="card-img-top" alt="..."/>
+                                        <div className="card-body">
+                                            <h5 className="card-title">{meal.title}</h5>
+                                            <Link to={`/meal/${meal.id}`}><p key={index}>See meal details</p></Link>
+                                        </div>
+                                  </div>
+                            </div>
                 })}
             </div>
 

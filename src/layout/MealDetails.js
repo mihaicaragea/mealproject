@@ -5,16 +5,17 @@ function MealDetails(props) {
 
     let id = props.match.params.id;
     const key = '1dfec2d9def1413d92b176006307e197';
+    const anotherKey = '1689071996f543429fedccf5f0885331';
 
     const [mealSummary, setMealSummary] = useState({});
     const [mealIngredients, setMealIngredients] = useState([]);
 
     useEffect(() => {
-        axios.get(`https://api.spoonacular.com/recipes/${id}/summary?apiKey=${key}`)
+        axios.get(`https://api.spoonacular.com/recipes/${id}/summary?apiKey=${anotherKey}`)
             .then(response => {
                 setMealSummary(response.data)
             })
-        axios.get(`https://api.spoonacular.com/recipes/${id}/ingredientWidget.json?apiKey=${key}`)
+        axios.get(`https://api.spoonacular.com/recipes/${id}/ingredientWidget.json?apiKey=${anotherKey}`)
             .then(response => {
                 setMealIngredients(response.data.ingredients)
             })
@@ -25,8 +26,7 @@ function MealDetails(props) {
     return (
         <>
             <h1>{mealSummary.title}</h1><br/>
-            <p>{mealSummary.summary}</p>
-
+            <div dangerouslySetInnerHTML={{ __html: mealSummary.summary }} />
 
             <table className="table">
                 <thead>
@@ -45,8 +45,6 @@ function MealDetails(props) {
                                 <td>{ingredient.amount.metric.value} g</td>
                             </tr>
                 })}
-
-
                 </tbody>
             </table>
         </>
