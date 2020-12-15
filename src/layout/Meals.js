@@ -1,6 +1,21 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import {Link} from "react-router-dom";
+import styled from "styled-components";
+
+const Input = styled.input`
+  margin-top: 10px;
+`
+
+const Button = styled.button`
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 80px;
+`
+
+const Pagination = styled.div`
+margin-top: 20px;
+`
 
 function Meals(props) {
 
@@ -16,8 +31,7 @@ function Meals(props) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(ingredient);
-        axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${anotherKey}&query=${ingredient}&number=40`)
+        axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${anotherKey}&query=${ingredient}&number=12`)
             .then(response => {
                 setMealList(response.data.results)
             })
@@ -26,28 +40,46 @@ function Meals(props) {
 
     return (
         <>
-        <div>Please enter the ingredient</div>
 
+            <div className="nav justify-content-center">
+                <form onSubmit={handleSubmit}>
+                    <Input className="form-control mr-sm-2" type="search" placeholder="Enter the ingredient" aria-label="Search" name="ingredient" value={ingredient} onChange={handleChange}/>
+                    <Button className="btn btn-sm btn-outline-secondary" type="submit">Search</Button>
+                </form>
+            </div>
 
-            <form action="" onSubmit={handleSubmit}>
-                <label htmlFor="ingredient">Ingredient</label>
-                <input type="text" id="ingredient" name="ingredient" value={ingredient} onChange={handleChange}/>
-                <button type='submit'>Submit search</button>
-            </form>
 
             <div className='row align-items-center'>
                 {mealList.map((meal, index) => {
-                    return <div className='col'>
-                            <div className="card" key={index}>
-                                        <img src={meal.image} className="card-img-top" alt="..."/>
-                                        <div className="card-body">
-                                            <h5 className="card-title">{meal.title}</h5>
-                                            <Link to={`/meal/${meal.id}`}><p key={index}>See meal details</p></Link>
-                                        </div>
-                                  </div>
+                    return <div className='col-sm-2'>
+                        <div className="card" key={index}>
+                            <img src={meal.image} className="card-img-top" alt="..."/>
+                            <div className="card-body">
+                                <h5 className="card-title">{meal.title}</h5>
+                                <Link to={`/meal/${meal.id}`}><p key={index}>See meal details</p></Link>
                             </div>
+                        </div>
+                    </div>
                 })}
             </div>
+
+            <Pagination>
+                <nav aria-label="...">
+                    <ul className="pagination justify-content-center">
+                        <li className="page-item disabled">
+                            <span className="page-link">Previous</span>
+                        </li>
+
+                        <li className="page-item"><a className="page-link" href="#">1</a></li>
+
+                        <li className="page-item active"><span className="page-link">2<span className="sr-only"></span></span></li>
+
+                        <li className="page-item"><a className="page-link" href="#">3</a></li>
+
+                        <li className="page-item"><a className="page-link" href="#">Next</a></li>
+                    </ul>
+                </nav>
+            </Pagination>
 
         </>
 

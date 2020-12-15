@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const NavStyle = styled.div`
-  background-color: midnightblue;
+  background-color: #540366;
 `
 
 

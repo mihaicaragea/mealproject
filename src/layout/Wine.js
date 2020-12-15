@@ -1,4 +1,9 @@
 import React from 'react';
+import styled from "styled-components";
+
+const ButtonGroup = styled.div`
+  margin-top: 20px;
+`
 
 function Wine(props) {
 
@@ -19,31 +24,18 @@ function Wine(props) {
         'madeira', 'banyuls', 'vin_santo', 'port', 'cava', 'cremant', 'champagne', 'prosecco', 'spumante', 'cream_sherry',
          'dry_sherry', 'dry_vermouth']
 
-    let listOfWines = [];
 
-    const getListOfWines = (list, e) => {
-        list.forEach(wine => {
-            listOfWines.push(<div>
-                <p>{wine}</p>
-            </div>)
-        })
-        console.log(list)
-    }
-
-    const clearListOfWines = () => {
-        setTimeout(() => {
-            listOfWines = [];
-        }, 1000)
-    }
-
-    clearListOfWines();
 
 
     return (
         <>
-            <button type="button" className="btn btn-primary" onClick={getListOfWines(whiteWine)}>White wines</button>
-            <button type="button" className="btn btn-primary" onClick={getListOfWines(redWine)}>Red wines</button>
-            <button type="button" className="btn btn-primary" onClick={getListOfWines(desertWine)}>Dessert wines</button>
+            <ButtonGroup className="pagination justify-content-center">
+                <div className="btn-group" role="group" aria-label="Basic example">
+                    <button type="button" className="btn btn-outline-primary">White</button>
+                    <button type="button" className="btn btn-outline-primary">Red</button>
+                    <button type="button" className="btn btn-outline-primary">Dessert</button>
+                </div>
+            </ButtonGroup>
 
         </>
     );

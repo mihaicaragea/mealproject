@@ -1,5 +1,24 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
+import styled from "styled-components";
+
+const Meal = styled.div`
+margin: 40px;
+padding: 20px;
+background-color: #f0d880;
+border-radius: 20px;
+`
+
+const Title = styled.h1`
+  align-items: center;
+`
+
+const Table = styled.table`
+  margin: 40px;
+  width: 80%;
+  border: solid #d1d1d1;
+`
+
 
 function MealDetails(props) {
 
@@ -25,28 +44,30 @@ function MealDetails(props) {
 
     return (
         <>
-            <h1>{mealSummary.title}</h1><br/>
-            <div dangerouslySetInnerHTML={{ __html: mealSummary.summary }} />
+            <Title>{mealSummary.title}</Title><br/>
+            <Meal dangerouslySetInnerHTML={{ __html: mealSummary.summary }} />
 
-            <table className="table">
-                <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Amount</th>
-                </tr>
-                </thead>
+            <div>
+                <Table className="table table-striped table-light">
+                    <thead className="table-warning">
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Amount</th>
+                    </tr>
+                    </thead>
 
-                <tbody>
-                {mealIngredients.map((ingredient, index) => {
-                    return <tr>
-                                <th scope="row">{index}</th>
-                                <td>{ingredient.name}</td>
-                                <td>{ingredient.amount.metric.value} g</td>
-                            </tr>
-                })}
-                </tbody>
-            </table>
+                    <tbody>
+                    {mealIngredients.map((ingredient, index) => {
+                        return <tr>
+                                    <th scope="row">{index}</th>
+                                    <td>{ingredient.name}</td>
+                                    <td>{ingredient.amount.metric.value} g</td>
+                                </tr>
+                    })}
+                    </tbody>
+                </Table>
+            </div>
         </>
     );
 }
