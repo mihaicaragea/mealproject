@@ -1,5 +1,6 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import styled from "styled-components";
+import {Link} from "react-router-dom";
 
 const ButtonGroup = styled.div`
   margin-top: 20px;
@@ -24,6 +25,11 @@ function Wine(props) {
         'madeira', 'banyuls', 'vin_santo', 'port', 'cava', 'cremant', 'champagne', 'prosecco', 'spumante', 'cream_sherry',
          'dry_sherry', 'dry_vermouth']
 
+    const [wineList, setWineList] = useState([]);
+
+    useEffect(() => {
+        setWineList(wineList);
+    }, [wineList]);
 
 
 
@@ -31,11 +37,17 @@ function Wine(props) {
         <>
             <ButtonGroup className="pagination justify-content-center">
                 <div className="btn-group" role="group" aria-label="Basic example">
-                    <button type="button" className="btn btn-outline-primary">White</button>
-                    <button type="button" className="btn btn-outline-primary">Red</button>
-                    <button type="button" className="btn btn-outline-primary">Dessert</button>
+                    <button type="button" className="btn btn-outline-primary" onClick={() => setWineList(whiteWine)}>White</button>
+                    <button type="button" className="btn btn-outline-primary" onClick={() => setWineList(redWine)}>Red</button>
+                    <button type="button" className="btn btn-outline-primary" onClick={() => setWineList(desertWine)}>Dessert</button>
                 </div>
             </ButtonGroup>
+
+            <div>
+                {wineList.map((wine, index) => {
+                    return <Link to={`/wine/${wine}`}><h2 key={index}>{wine.replace("_", " ")}</h2></Link>
+                })}
+            </div>
 
         </>
     );

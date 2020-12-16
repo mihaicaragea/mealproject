@@ -5,6 +5,9 @@ import Wine from "./layout/Wine";
 import Random from "./layout/Random";
 import Meals from "./layout/Meals";
 import MealDetails from "./layout/MealDetails";
+import WineDetails from "./layout/WineDetails";
+import "./App.css"
+
 
 
 function App() {
@@ -17,8 +20,9 @@ function App() {
         <Router>
             <Route exact path={'/meal'} component={Meals}/>
             <Route path={'/random'} component={Random}/>
-            <Route path={'/wine'} component={Wine}/>
+            <Route exact path={'/wine'} component={Wine}/>
             <Route path={'/meal/:id'} component={MealDetails}/>
+            <Route path={'/wine/:name'} component={WineDetails}/>
         </Router>
 
     </div>

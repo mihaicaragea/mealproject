@@ -21,6 +21,8 @@ function Meals(props) {
 
     const [mealList, setMealList] = useState([]);
     const [ingredient, setIngredient] = useState('');
+    const [page, setPage] = useState(0);
+
     const key = '1dfec2d9def1413d92b176006307e197';
     const anotherKey = '1689071996f543429fedccf5f0885331';
 
@@ -29,12 +31,30 @@ function Meals(props) {
         setIngredient(e.target.value);
     }
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${anotherKey}&query=${ingredient}&number=12`)
+    useEffect(() => {
+        axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${anotherKey}&query=${ingredient}&number=12&offset=${page}`)
             .then(response => {
                 setMealList(response.data.results)
             })
+    }, [page])
+
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${anotherKey}&query=${ingredient}&number=12&offset=${page}`)
+            .then(response => {
+                setMealList(response.data.results)
+            })
+    }
+
+    function previousPage() {
+        if (page > 0) {
+            setPage(page - 10);
+        }
+    }
+
+    function nextPage() {
+        setPage(page + 10);
     }
 
 
@@ -63,23 +83,14 @@ function Meals(props) {
                 })}
             </div>
 
-            <Pagination>
-                <nav aria-label="...">
-                    <ul className="pagination justify-content-center">
-                        <li className="page-item disabled">
-                            <span className="page-link">Previous</span>
-                        </li>
-
-                        <li className="page-item"><a className="page-link" href="#">1</a></li>
-
-                        <li className="page-item active"><span className="page-link">2<span className="sr-only"></span></span></li>
-
-                        <li className="page-item"><a className="page-link" href="#">3</a></li>
-
-                        <li className="page-item"><a className="page-link" href="#">Next</a></li>
-                    </ul>
-                </nav>
-            </Pagination>
+            <div>
+                <button onClick={previousPage} className="btn btn-primary">
+                    Previous
+                </button>
+                <button onClick={nextPage} className="btn btn-primary">
+                    Next
+                </button>
+            </div>
 
         </>
 
