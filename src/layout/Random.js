@@ -1,17 +1,33 @@
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
+import styled from "styled-components";
+import {properties} from "../properties";
+
+const Meal = styled.div`
+    margin: 40px;
+    padding: 20px;
+    background-color: #f0d880;
+    border-radius: 20px;
+`
+
+const Image = styled.img`
+
+    max-width: 100%;
+    width: auto;
+    height: auto;
+`
+
+const Title = styled.h1`
+
+
+`
 
 function Random(props) {
 
-
-
     const [randomMeal, setRandomMeal] = useState([{}]);
-    const key = '1dfec2d9def1413d92b176006307e197';
-    const anotherKey = '1689071996f543429fedccf5f0885331';
-
 
     useEffect(() => {
-        axios.get(`https://api.spoonacular.com/recipes/random?apiKey=${anotherKey}`)
+        axios.get(`https://api.spoonacular.com/recipes/random?apiKey=${properties.firstKey}`)
             .then(response => {
                 setRandomMeal(response.data.recipes[0])
             })
@@ -21,15 +37,13 @@ function Random(props) {
 
     return (
         <>
-        <div>This is the random page</div>
-        {/*<button onClick={useEffect}>Generate Random meal</button>*/}
 
 
-            <h1>{randomMeal.title}</h1>
+            <Title>{randomMeal.title}</Title>
 
-            <p dangerouslySetInnerHTML={{ __html: randomMeal.summary }}></p>
+            <Meal dangerouslySetInnerHTML={{ __html: randomMeal.summary }}></Meal>
 
-            <img src={randomMeal.image} alt=""/>
+            <Image src={randomMeal.image} alt=""/>
             </>
     );
 }

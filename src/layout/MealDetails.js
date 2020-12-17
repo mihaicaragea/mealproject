@@ -1,11 +1,13 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import styled from "styled-components";
+import {Link} from "react-router-dom";
+import {properties} from "../properties";
 
 const Meal = styled.div`
 margin: 40px;
 padding: 20px;
-background-color: #f0d880;
+background-color: #ffe3d8;
 border-radius: 20px;
 `
 
@@ -19,22 +21,24 @@ const Table = styled.table`
   border: solid #d1d1d1;
 `
 
+const Button = styled.button`
+  margin: 40px;
+`
+
 
 function MealDetails(props) {
 
     let id = props.match.params.id;
-    const key = '1dfec2d9def1413d92b176006307e197';
-    const anotherKey = '1689071996f543429fedccf5f0885331';
 
     const [mealSummary, setMealSummary] = useState({});
     const [mealIngredients, setMealIngredients] = useState([]);
 
     useEffect(() => {
-        axios.get(`https://api.spoonacular.com/recipes/${id}/summary?apiKey=${anotherKey}`)
+        axios.get(`https://api.spoonacular.com/recipes/${id}/summary?apiKey=${properties.firstKey}`)
             .then(response => {
                 setMealSummary(response.data)
             })
-        axios.get(`https://api.spoonacular.com/recipes/${id}/ingredientWidget.json?apiKey=${anotherKey}`)
+        axios.get(`https://api.spoonacular.com/recipes/${id}/ingredientWidget.json?apiKey=${properties.firstKey}`)
             .then(response => {
                 setMealIngredients(response.data.ingredients)
             })
@@ -68,6 +72,13 @@ function MealDetails(props) {
                     </tbody>
                 </Table>
             </div>
+
+            <div>
+                <Link to={`${id}/recipe`}>
+                    <Button type="button" className="btn btn-primary">Get Recipe</Button></Link>
+            </div>
+
+
         </>
     );
 }

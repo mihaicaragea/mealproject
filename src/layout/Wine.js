@@ -2,8 +2,25 @@ import React, {useEffect, useState} from 'react';
 import styled from "styled-components";
 import {Link} from "react-router-dom";
 
+
 const ButtonGroup = styled.div`
   margin-top: 20px;
+  margin-bottom: 60px;
+ background-image: url("/src/layout/wine.jpg");
+`
+
+const NameContainer = styled.div`
+   border: solid #c9c1c1 1px;
+   border-radius: 5px;
+   text-align: center;
+   margin: 0;
+   padding: 0;
+`
+
+const WineName = styled.h4`
+color: #0a043c;
+margin: 0;
+padding: 10px;
 `
 
 function Wine(props) {
@@ -33,8 +50,10 @@ function Wine(props) {
 
 
 
+
     return (
-        <>
+        <div>
+
             <ButtonGroup className="pagination justify-content-center">
                 <div className="btn-group" role="group" aria-label="Basic example">
                     <button type="button" className="btn btn-outline-primary" onClick={() => setWineList(whiteWine)}>White</button>
@@ -43,13 +62,29 @@ function Wine(props) {
                 </div>
             </ButtonGroup>
 
-            <div>
+            <div className='container'>
+                <div className='row'>
                 {wineList.map((wine, index) => {
-                    return <Link to={`/wine/${wine}`}><h2 key={index}>{wine.replace("_", " ")}</h2></Link>
+                    return <NameContainer className='col-6'>
+                        <Link to={`/wine/${wine}`}>
+                            <WineName id={index}
+                                                 onMouseOver={() => {
+                                                        document.getElementById(index).style.color = '#fff';
+                                                        document.getElementById(index).style.backgroundColor = "#03506f";
+                                                 }}
+                                                 onMouseOut={() => {
+                                                         document.getElementById(index).style.color = "#0a043c";
+                                                         document.getElementById(index).style.backgroundColor = "#fff";
+                                                 }}
+                                                 key={index}>{wine.replace("_", " ").charAt(0).toUpperCase()+wine.replace("_", " ").slice(1)}
+                            </WineName>
+                        </Link>
+                         </NameContainer>
                 })}
+                </div>
             </div>
 
-        </>
+        </div>
     );
 }
 

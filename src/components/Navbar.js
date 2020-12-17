@@ -41,6 +41,15 @@ function Navbar(props) {
                        }} onMouseOut={() =>
                         document.querySelector(`#wine`).style.backgroundColor = "#287ed9"}>Wine</a>
                 </li>
+                <li className="nav-item">
+                    <a className="nav-link" id="videos" href="/videos" style={{"color": "white"}}
+                       onMouseOver={() => {
+                           document.querySelector(`#videos`).style.backgroundColor = "#144d86"
+                           document.querySelector(`#videos`).style.border = "none";
+                           document.querySelector(`#videos`).style.borderRadius = "10px";
+                       }} onMouseOut={() =>
+                        document.querySelector(`#videos`).style.backgroundColor = "#287ed9"}>Videos</a>
+                </li>
             </ul>
 
         </NavStyle>
