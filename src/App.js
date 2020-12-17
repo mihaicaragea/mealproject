@@ -16,7 +16,6 @@ function App() {
 
     <div className="App">
         <Navbar/>
-
         <Router>
             <Route exact path={'/meal'} component={Meals}/>
             <Route path={'/random'} component={Random}/>

@@ -20,11 +20,11 @@ const Table = styled.table`
 `
 
 
-function MealDetails(props) {
+function MealDetails(props, img) {
 
     let id = props.match.params.id;
     const key = '1dfec2d9def1413d92b176006307e197';
-    const anotherKey = '1689071996f543429fedccf5f0885331';
+    const anotherKey = 'abe686b22394465e99701788de4774cc';
 
     const [mealSummary, setMealSummary] = useState({});
     const [mealIngredients, setMealIngredients] = useState([]);
@@ -44,30 +44,34 @@ function MealDetails(props) {
 
     return (
         <>
-            <Title>{mealSummary.title}</Title><br/>
-            <Meal dangerouslySetInnerHTML={{ __html: mealSummary.summary }} />
+            <div class="meal-details-container">
+                <h1 className="meal-title">{mealSummary.title}</h1>
+            
+                <img src={img} className="card-img" alt="..."/>
+                <Meal dangerouslySetInnerHTML={{ __html: mealSummary.summary }} />
 
-            <div>
-                <Table className="table table-striped table-light">
-                    <thead className="table-warning">
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Name</th>
-                        <th scope="col">Amount</th>
-                    </tr>
-                    </thead>
+                <div>
+                    <Table className="table table-striped table-light">
+                        <thead className="table-warning">
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Amount</th>
+                        </tr>
+                        </thead>
 
-                    <tbody>
-                    {mealIngredients.map((ingredient, index) => {
-                        return <tr>
-                                    <th scope="row">{index}</th>
-                                    <td>{ingredient.name}</td>
-                                    <td>{ingredient.amount.metric.value} g</td>
-                                </tr>
-                    })}
-                    </tbody>
-                </Table>
-            </div>
+                        <tbody>
+                        {mealIngredients.map((ingredient, index) => {
+                            return <tr>
+                                        <th scope="row">{index}</th>
+                                        <td>{ingredient.name}</td>
+                                        <td>{ingredient.amount.metric.value} g</td>
+                                    </tr>
+                        })}
+                        </tbody>
+                    </Table>
+                </div>
+            </div>    
         </>
     );
 }

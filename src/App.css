@@ -1,3 +1,162 @@
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script&family=Indie+Flower&display=swap");
+
+* {
+  font-family: Dancing Script;
+}
 a {
-    text-decoration: none;
+  text-decoration: none;
+  color: white;
+}
+a:hover {
+  color: white;
+  opacity: 0.8;
+}
+
+#root {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  background-image: url("https://images.unsplash.com/photo-1521215997172-95c11d778b86?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80");
+  height: 200px;
+  background-repeat: no-repeat;
+  background-position: bottom;
+  background-position-y: px;
+  align-items: center;
+  justify-content: center;
+}
+
+.header ul {
+  position: relative;
+  display: flex;
+  top: 30px;
+}
+
+.header li {
+  background-color: none;
+  font-size: 30px;
+  font-family: Dancing script;
+  list-style: none;
+  text-decoration: none;
+  margin-right: 30px;
+  text-shadow: 3px 3px 0 #000;
+}
+
+.header h1 {
+  font-family: Dancing script;
+  color: rgb(rgb(165, 143, 16), green, blue);
+  font-weight: bold;
+  font-size: 60px;
+  text-shadow: 3px 3px 0 #000;
+}
+
+.meals-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.search-box {
+  width: 50%;
+}
+.search-box form {
+  display: flex;
+  justify-content: space-around;
+  margin: 30px 0 30px;
+}
+.search-box input {
+    outline: none;
+  width: 90%;
+  border: none;
+  border-bottom: solid black 1px;
+  margin-right: 10px;
+}
+
+.search-input:focus {
+    background-color: whitesmoke;
+}
+
+
+.search-box button {
+    background-color: white;
+  padding: 5px 30px;
+  border: none;
+  outline: none;
+  text-shadow: 0.5px  0 #000;
+}
+
+.search-box button:hover{
+    background-color: whitesmoke;
+    
+}
+.cards-wrapper{
+    width: 100%;
+    display: flex;
+    margin-bottom: 40px;
+}
+.next-butn,
+.prev-butn{
+    font-size: 20px;
+    background-color: white;
+    border: none;
+}
+
+.next-butn:hover,
+.prev-butn:hover{
+    color: blue;
+}
+
+.next-butn:focus,
+.prev-butn:focus{
+    outline: none;
+}
+.next-butn{
+    outline: none;
+    margin-left: 60px;
+}
+
+.prev-butn{
+    outline: none;
+    margin-right: 60px;
+}
+
+.cards-box{
+    width: 80%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px,1fr));
+    grid-gap: 30px;
+    grid-row: 150px;
+
+}
+
+.card { 
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+
+}
+
+.card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  }
+
+.card p{
+    color:blue;
+}
+
+.card p:hover{
+    text-shadow: 0 6px 8px 0 rgba(0,0,0,0.2);
+}
+
+
+.card-body{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.meal-title{
+    margin: 30px 0 0 15px;
 }
