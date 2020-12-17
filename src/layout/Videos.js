@@ -17,6 +17,13 @@ const Pagination = styled.button`
   margin : 20px;
 `
 
+const VideoTitle = styled.h5`
+  text-align: center;
+  margin-top: 20px;
+  font-family: 'Fredericka the Great', cursive;
+  color: #045762;
+`
+
 function Videos(props) {
 
     const [videos, setVideos] = useState([]);
@@ -29,7 +36,7 @@ function Videos(props) {
     }
 
     useEffect(() => {
-        axios.get(`https://api.spoonacular.com/food/videos/search?apiKey=${properties.firstKey}&query=${ingredient}&number=12&offset=${page}`)
+        axios.get(`https://api.spoonacular.com/food/videos/search?apiKey=${properties.fifthKey}&query=${ingredient}&number=12&offset=${page}`)
             .then(response => {
                 setVideos(response.data.videos)
             })
@@ -37,7 +44,7 @@ function Videos(props) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.get(`https://api.spoonacular.com/food/videos/search?apiKey=${properties.firstKey}&query=${ingredient}&number=12&offset=${page}`)
+        axios.get(`https://api.spoonacular.com/food/videos/search?apiKey=${properties.fifthKey}&query=${ingredient}&number=12&offset=${page}`)
             .then(response => {
                 setVideos(response.data.videos)
             })
@@ -62,6 +69,17 @@ function Videos(props) {
         setPage(page + 10);
     }
 
+    const pagination = <div>
+        <Pagination onClick={previousPage} className="btn btn-outline-success">
+            Previous
+        </Pagination>
+        <Pagination onClick={nextPage} className="btn btn-outline-success">
+            Next
+        </Pagination>
+    </div>
+
+    const noPagination = <div> </div>
+
     return (
         <>
 
@@ -75,22 +93,15 @@ function Videos(props) {
             <div className='row align-items-center'>
             {videos.map((vid, index) => {
                 return <div  className='col-sm-3'>
-                    <h5>{vid.title}</h5>
+                    <VideoTitle>{vid.title}</VideoTitle>
                     <YouTube videoId={vid.youTubeId} opts={opts}  />
                     <p>Length : {Math.floor(vid.length % 3600 / 60)}:{Math.floor(vid.length % 3600 % 60)} min</p>
                 </div>
             })}
             </div>
 
-            <div>
-                <Pagination onClick={previousPage} className="btn btn-primary">
-                    Previous
-                </Pagination>
+            {videos.length > 0 ? pagination : noPagination }
 
-                <Pagination onClick={nextPage} className="btn btn-primary">
-                    Next
-                </Pagination>
-            </div>
 
         </>
     );

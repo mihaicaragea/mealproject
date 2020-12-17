@@ -3,22 +3,25 @@ import axios from 'axios';
 import styled from "styled-components";
 import {properties} from "../properties";
 
-const Meal = styled.div`
+const MealDescription = styled.div`
     margin: 40px;
     padding: 20px;
-    background-color: #f0d880;
+    background-color: #9fd281;
     border-radius: 20px;
 `
 
 const Image = styled.img`
-
     max-width: 100%;
     width: auto;
     height: auto;
+    border-radius: 20px;
 `
 
 const Title = styled.h1`
-
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-family: 'Kaushan Script', cursive;
 
 `
 
@@ -27,7 +30,7 @@ function Random(props) {
     const [randomMeal, setRandomMeal] = useState([{}]);
 
     useEffect(() => {
-        axios.get(`https://api.spoonacular.com/recipes/random?apiKey=${properties.firstKey}`)
+        axios.get(`https://api.spoonacular.com/recipes/random?apiKey=${properties.fifthKey}`)
             .then(response => {
                 setRandomMeal(response.data.recipes[0])
             })
@@ -41,9 +44,19 @@ function Random(props) {
 
             <Title>{randomMeal.title}</Title>
 
-            <Meal dangerouslySetInnerHTML={{ __html: randomMeal.summary }}></Meal>
+            <div className='container'>
+                <div className='row'>
+                    <div className='col'>
+                        <MealDescription dangerouslySetInnerHTML={{__html: randomMeal.summary}}/>
+                    </div>
+                    <div className='col'>
+                        <Image src={randomMeal.image} alt=""/>
+                    </div>
+                </div>
+            </div>
 
-            <Image src={randomMeal.image} alt=""/>
+
+
             </>
     );
 }

@@ -19,6 +19,15 @@ const Pagination = styled.button`
   
 `
 
+const MealDetails = styled.p`
+    font-family: 'Cabin Sketch', cursive;
+    color: #50781b;
+    border-style: double;
+    border-radius: 10px;
+    padding: 5px;
+    width: 140px;
+`
+
 function Meals(props) {
 
 
@@ -32,7 +41,7 @@ function Meals(props) {
     }
 
     useEffect(() => {
-        axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${properties.firstKey}&query=${ingredient}&number=12&offset=${page}`)
+        axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${properties.fifthKey}&query=${ingredient}&number=12&offset=${page}`)
             .then(response => {
                 setMealList(response.data.results)
             })
@@ -41,7 +50,7 @@ function Meals(props) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${properties.firstKey}&query=${ingredient}&number=12&offset=${page}`)
+        axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${properties.fifthKey}&query=${ingredient}&number=12&offset=${page}`)
             .then(response => {
                 setMealList(response.data.results)
             })
@@ -76,7 +85,7 @@ function Meals(props) {
                             <img src={meal.image} className="card-img-top" alt="..."/>
                             <div className="card-body">
                                 <h5 className="card-title">{meal.title}</h5>
-                                <Link to={`/meal/${meal.id}`}><p key={index}>See meal details</p></Link>
+                                <Link to={`/meal/${meal.id}`}><MealDetails key={index}>See meal details</MealDetails></Link>
                             </div>
                         </div>
                     </div>
@@ -84,15 +93,16 @@ function Meals(props) {
             </div>
 
             <div>
-                    <Pagination onClick={previousPage} className="btn btn-primary">
+                    <Pagination onClick={previousPage} className="btn btn-outline-success">
                         Previous
                     </Pagination>
 
-                    <Pagination onClick={nextPage} className="btn btn-primary">
+                    <Pagination onClick={nextPage} className="btn btn-outline-success">
                         Next
                     </Pagination>
 
             </div>
+
 
         </>
 

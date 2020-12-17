@@ -20,7 +20,7 @@ function App() {
         <Navbar/>
 
         <Router>
-            <Route exact path={'/meal'} component={Meals}/>
+            <Route exact path={'/'} component={Meals}/>
             <Route path={'/random'} component={Random}/>
             <Route exact path={'/wine'} component={Wine}/>
             <Route exact path={'/meal/:id'} component={MealDetails}/>
