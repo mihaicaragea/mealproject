@@ -12,7 +12,7 @@ function Meals(props) {
     const [page, setPage] = useState(0);
 
     const key = '1dfec2d9def1413d92b176006307e197';
-    const anotherKey = 'abe686b22394465e99701788de4774cc';
+    const anotherKey = 'b2a20becde5f4f27a73df01bbee44c7c';
 
     const handleChange = (e) => {
         e.preventDefault();
@@ -65,7 +65,7 @@ function Meals(props) {
                                 <img src={meal.image} className="card-img" alt="..."/>
                                 <div className="card-body">
                                     <h5 className="card-title">{meal.title}</h5>
-                                    <Link to={`/meal/${meal.id}`} img={meal.image}><p key={index}>See meal details</p></Link>
+                                    <Link to={{ pathname : `/meal/${meal.id}`, state : `${meal.image}`}} ><p key={index}>See meal details</p></Link>
                                 </div>
                             </div>
                             </>

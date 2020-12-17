@@ -1,7 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Dancing+Script&family=Indie+Flower&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Courgette&display=swap');
+
 
 * {
-  font-family: Dancing Script;
+  font-family: courgette;
 }
 a {
   text-decoration: none;
@@ -68,28 +70,34 @@ a:hover {
   margin: 30px 0 30px;
 }
 .search-box input {
+    font-family: Dancing Script;
     outline: none;
   width: 90%;
   border: none;
   border-bottom: solid black 1px;
   margin-right: 10px;
+  opacity: 0.5;
 }
 
 .search-input:focus {
     background-color: whitesmoke;
+    opacity: 1;
 }
 
 
 .search-box button {
+    font-family: Dancing Script;
     background-color: white;
   padding: 5px 30px;
   border: none;
   outline: none;
   text-shadow: 0.5px  0 #000;
+  opacity: 0.8;
 }
 
 .search-box button:hover{
     background-color: whitesmoke;
+    opacity: 1;
     
 }
 .cards-wrapper{
@@ -99,6 +107,7 @@ a:hover {
 }
 .next-butn,
 .prev-butn{
+    font-family: Dancing Script;
     font-size: 20px;
     background-color: white;
     border: none;
@@ -124,6 +133,7 @@ a:hover {
 }
 
 .cards-box{
+    font-family: Courgette;
     width: 80%;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(150px,1fr));
@@ -143,6 +153,8 @@ a:hover {
   }
 
 .card p{
+    font-size: 20px;
+    font-family: Dancing Script;
     color:blue;
 }
 
@@ -157,6 +169,74 @@ a:hover {
     justify-content: space-between;
 }
 
+
+
+.items-container{
+    background-color:whitesmoke;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+}
+.meal-details-container{
+    font-size: 26px;
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+
+
 .meal-title{
+    font-family: Dancing Script;
+    font-weight: bold;
     margin: 30px 0 0 15px;
+    text-shadow: .5px 5px 0 #ccc;
+}
+
+.img-ingredients-wrapper{
+    width: 90%;
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+}
+.ingredients-table{
+    margin-right: 60px;
+}
+
+.ingredients-table th {
+    font-family: dancing script;
+    font-weight: bold;
+    font-size: 30px;
+   
+}
+
+.ingredients-table tr{
+    font-family: Courgette;
+    font-size: 20px;
+   
+}
+.items-container td{
+    padding:0 20px;
+}
+
+.recipe-img{
+    width: 650px;
+    height: 350px;
+    box-shadow: 10px 10px 10px #ccc;
+}
+
+.recipe-summary{
+    margin: 50px 0 50px;
+    width: 90%;
+    font-size: 20px;
+}
+
+.recipe-summary p {
+    font-family: Courgette;
+    
+}
+.recipe-summary a{
+    color: blue;
 }
