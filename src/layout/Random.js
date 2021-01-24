@@ -6,7 +6,7 @@ import {properties} from "../properties";
 const MealDescription = styled.div`
     margin: 40px;
     padding: 20px;
-    background-color: #9fd281;
+    background-color: #c7eeb2;
     border-radius: 20px;
 `
 
@@ -30,7 +30,7 @@ function Random(props) {
     const [randomMeal, setRandomMeal] = useState([{}]);
 
     useEffect(() => {
-        axios.get(`https://api.spoonacular.com/recipes/random?apiKey=${properties.fifthKey}`)
+        axios.get(`https://api.spoonacular.com/recipes/random?apiKey=${properties.forthKey}`)
             .then(response => {
                 setRandomMeal(response.data.recipes[0])
             })

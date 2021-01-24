@@ -11,7 +11,7 @@ import Nutrition from "./Nutrition";
 const Meal = styled.div`
 margin: 40px;
 padding: 20px;
-background-color: #ffe3d8;
+background-color: #c7eeb2;
 border-radius: 20px;
 `
 
@@ -49,15 +49,15 @@ function MealDetails(props) {
     const [mealPicture, setMealPicture] = useState("");
 
     useEffect(() => {
-        axios.get(`https://api.spoonacular.com/recipes/${id}/summary?apiKey=${properties.fifthKey}`)
+        axios.get(`https://api.spoonacular.com/recipes/${id}/summary?apiKey=${properties.forthKey}`)
             .then(response => {
                 setMealSummary(response.data)
             })
-        axios.get(`https://api.spoonacular.com/recipes/${id}/ingredientWidget.json?apiKey=${properties.fifthKey}`)
+        axios.get(`https://api.spoonacular.com/recipes/${id}/ingredientWidget.json?apiKey=${properties.forthKey}`)
             .then(response => {
                 setMealIngredients(response.data.ingredients)
             })
-        axios.get(`https://api.spoonacular.com/recipes/${id}/information?apiKey=${properties.fifthKey}&includeNutrition=false`)
+        axios.get(`https://api.spoonacular.com/recipes/${id}/information?apiKey=${properties.forthKey}&includeNutrition=false`)
             .then(response => {
                 setMealPicture(response.data.image)
                 console.log(response.data.image)
@@ -96,9 +96,9 @@ function MealDetails(props) {
 
             <div>
                 <Link to={`${id}/recipe`}>
-                    <Button type="button" className="btn btn-primary">Get Recipe</Button>
+                    <Button type="button" className="btn btn-outline-success">Get Recipe</Button>
                 </Link>
-                <Button onClick={openModal} type="button" className="btn btn-primary">See Nutrition Values</Button>
+                <Button onClick={openModal} type="button" className="btn btn-outline-success">See Nutrition Values</Button>
             </div>
 
             <Meal dangerouslySetInnerHTML={{ __html: mealSummary.summary }} />

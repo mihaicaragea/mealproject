@@ -41,7 +41,7 @@ function Meals(props) {
     }
 
     useEffect(() => {
-        axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${properties.fifthKey}&query=${ingredient}&number=12&offset=${page}`)
+        axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${properties.forthKey}&query=${ingredient}&number=12&offset=${page}`)
             .then(response => {
                 setMealList(response.data.results)
             })
@@ -50,7 +50,7 @@ function Meals(props) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${properties.fifthKey}&query=${ingredient}&number=12&offset=${page}`)
+        axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${properties.forthKey}&query=${ingredient}&number=12&offset=${page}`)
             .then(response => {
                 setMealList(response.data.results)
             })

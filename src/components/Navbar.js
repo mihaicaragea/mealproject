@@ -7,14 +7,11 @@ const NavStyle = styled.div`
   background-repeat: no-repeat;
   width: auto;
   height: 200px;
- 
-  
 `
 
 const ButtonGroup = styled.ul`
 width: auto;
 background-color : #9fd281;
-border-radius: 20px;
 opacity: 0.9;
 margin-block-end: 0;
 `

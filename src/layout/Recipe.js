@@ -15,7 +15,7 @@ function Recipe(props) {
     const [recipe, setRecipe] = useState([]);
 
     useEffect(() => {
-        axios.get(`https://api.spoonacular.com/recipes/${id}/information?apiKey=${properties.fifthKey}&includeNutrition=false`)
+        axios.get(`https://api.spoonacular.com/recipes/${id}/information?apiKey=${properties.forthKey}&includeNutrition=false`)
             .then(response => {
                 setRecipe(response.data.extendedIngredients);
             })

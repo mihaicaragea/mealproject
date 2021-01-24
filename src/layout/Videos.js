@@ -36,7 +36,7 @@ function Videos(props) {
     }
 
     useEffect(() => {
-        axios.get(`https://api.spoonacular.com/food/videos/search?apiKey=${properties.fifthKey}&query=${ingredient}&number=12&offset=${page}`)
+        axios.get(`https://api.spoonacular.com/food/videos/search?apiKey=${properties.forthKey}&query=${ingredient}&number=12&offset=${page}`)
             .then(response => {
                 setVideos(response.data.videos)
             })
@@ -44,7 +44,7 @@ function Videos(props) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.get(`https://api.spoonacular.com/food/videos/search?apiKey=${properties.fifthKey}&query=${ingredient}&number=12&offset=${page}`)
+        axios.get(`https://api.spoonacular.com/food/videos/search?apiKey=${properties.forthKey}&query=${ingredient}&number=12&offset=${page}`)
             .then(response => {
                 setVideos(response.data.videos)
             })
@@ -95,7 +95,7 @@ function Videos(props) {
                 return <div  className='col-sm-3'>
                     <VideoTitle>{vid.title}</VideoTitle>
                     <YouTube videoId={vid.youTubeId} opts={opts}  />
-                    <p>Length : {Math.floor(vid.length % 3600 / 60)}:{Math.floor(vid.length % 3600 % 60)} min</p>
+                   <p>Length : {Math.floor(vid.length % 3600 / 60)}:{Math.floor(vid.length % 3600 % 60)} min</p>
                 </div>
             })}
             </div>

@@ -10,7 +10,7 @@ function Nutrition({mealId}) {
     const [goodNutritionInfo, setGoodNutritionInfo] = useState([]);
 
     useEffect(() => {
-        axios.get(`https://api.spoonacular.com/recipes/${mealId}/nutritionWidget.json?apiKey=${properties.fifthKey}`)
+        axios.get(`https://api.spoonacular.com/recipes/${mealId}/nutritionWidget.json?apiKey=${properties.forthKey}`)
             .then(response => {
                 setBadNutritionInfo(response.data.bad);
                 setGoodNutritionInfo(response.data.good);

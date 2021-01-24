@@ -6,7 +6,7 @@ import {properties} from "../properties";
 const WineDescription = styled.div`
 margin: 40px;
 padding: 20px;
-background-color: #9fd281;
+background-color: #c7eeb2;
 border-radius: 20px;
 `
 
@@ -14,7 +14,7 @@ const FoodPairing = styled.div`
 margin: 40px;
 font-family: 'Sedgwick Ave', cursive;
 font-size: 40px;
-text-shadow: 2px 2px #c2ff9f;
+text-shadow: 2px 2px #c7eeb2;
 `
 
 function WineDetails(props) {
@@ -27,12 +27,12 @@ function WineDetails(props) {
     const [wineError, setWineError] = useState("");
 
     useEffect(() => {
-        axios.get(`https://api.spoonacular.com/food/wine/description?apiKey=${properties.fifthKey}&wine=${wineName}`)
+        axios.get(`https://api.spoonacular.com/food/wine/description?apiKey=${properties.forthKey}&wine=${wineName}`)
             .then(response => {
                 setWineDetails(response.data.wineDescription);
             })
 
-        axios.get(`https://api.spoonacular.com/food/wine/dishes?apiKey=${properties.fifthKey}&wine=${wineName}`)
+        axios.get(`https://api.spoonacular.com/food/wine/dishes?apiKey=${properties.forthKey}&wine=${wineName}`)
             .then(response => {
                 if(response.data.status === "failure"){
                     setWineError(response.data.message);
