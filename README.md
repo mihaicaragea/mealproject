@@ -1,7 +1,7 @@
-Github for code management
-Front-end : ReactJS, HTML, CSS, Bootstrap
-Data : https://spoonacular.com/food-api
-Project management tool : NPM
+Github for code management<br>
+Front-end : ReactJS, HTML, CSS, Bootstrap<br>
+Data : https://spoonacular.com/food-api<br>
+Project management tool : NPM<br>
 
 ![Captură de ecran din 2021-02-23 la 11 27 28](https://user-images.githubusercontent.com/61205164/108826033-7dd7b980-75cc-11eb-9de4-f84ff0c8e9eb.png)
 
