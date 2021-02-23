@@ -21,13 +21,11 @@ function Random(props) {
 
     return (
         <>
-        <div>This is the random page</div>
-        {/*<button onClick={useEffect}>Generate Random meal</button>*/}
-
+    
 
             <h1>{randomMeal.title}</h1>
 
-            <p dangerouslySetInnerHTML={{ __html: randomMeal.summary }}></p>
+            <p className="recipe-summary" dangerouslySetInnerHTML={{ __html: randomMeal.summary }}></p>
 
             <img src={randomMeal.image} alt=""/>
             </>
